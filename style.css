@@ -1,0 +1,26 @@
+body {
+    background-color: #e20450;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .beer-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  
+  .beer-item h2 {
+    color: #ffdc00;
+  }
+  

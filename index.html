@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEERBUBBLES - TAPLIST</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="text-center">
+    <img src="logo.svg" alt="BEER BUBBLES" class="logo">
+    <h1 class="display-4">BEERBUBBLES - TAPLIST</h1>
+  </div>
+
+  <div id="beer-list" class="row">
+    <!-- Le birre saranno inserite qui con JavaScript -->
+  </div>
+</div>
+
+<script>
+  fetch('./beers.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const beerList = document.getElementById('beer-list');
+      data.forEach((beer, index) => {
+        const beerItem = document.createElement('div');
+        beerItem.classList.add('col-12', 'beer-item');
+        beerItem.innerHTML = `
+          <h2>${index + 1}. ${beer.name}</h2>
+          <p>${beer.details.join('<br>')}</p>
+        `;
+        beerList.appendChild(beerItem);
+      });
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
